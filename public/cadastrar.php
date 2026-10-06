@@ -7,12 +7,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST["nome"];
     $categoria = $_POST["categoria"];
     $descricao = $_POST["descricao"];
-    $faixa_etaria = $_POST["faixa_etaria"];
     $preco = $_POST["preco"];
     $estoque = $_POST["estoque"];
+    $data_validade = $_POST["data_validade"];
 
-    $sql = "INSERT INTO brinquedos
-            (nome, categoria, descricao, faixa_etaria, preco, quantidade_estoque)
+    $sql = "INSERT INTO produtos
+            (nome, categoria, descricao, preco, quantidade_estoque, data_validade)
             VALUES (?, ?, ?, ?, ?, ?)";
 
     $stmt = $conexao->prepare($sql);
@@ -22,17 +22,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $stmt->bind_param(
-        "ssssdi",
+        "sssdis",
         $nome,
         $categoria,
         $descricao,
-        $faixa_etaria,
         $preco,
-        $estoque
+        $estoque,
+        $data_validade
     );
 
     if (!$stmt->execute()) {
-        die("Erro ao cadastrar brinquedo: " . $stmt->error);
+        die("Erro ao cadastrar produto: " . $stmt->error);
     }
 
     $stmt->close();
