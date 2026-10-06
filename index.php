@@ -2,7 +2,7 @@
 
 require_once "infra/conexao.php";
 
-$sql = "SELECT * FROM brinquedos ORDER BY nome ASC";
+$sql = "SELECT * FROM produtos ORDER BY nome ASC";
 $resultado = $conexao->query($sql);
 
 if (!$resultado) {
