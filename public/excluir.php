@@ -9,10 +9,12 @@ if (!isset($_GET["id"])) {
 
 $id = (int) $_GET["id"];
 
-$sql = "DELETE FROM brinquedos WHERE id = ?";
+$sql = "DELETE FROM produtos WHERE id = ?";
 
 $comando = $conexao->prepare($sql);
+
 $comando->bind_param("i", $id);
+
 $comando->execute();
 
 $comando->close();
