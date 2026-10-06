@@ -1,7 +1,7 @@
 <?php
 
 $servidor = "localhost";
-$usuario = "root"; 
+$usuario = "root";
 $senha = "";
 $database = "estoque";
 $porta = 3306;
